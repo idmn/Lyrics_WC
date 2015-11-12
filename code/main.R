@@ -5,17 +5,18 @@ library(RColorBrewer)
 library(data.table)
 library(tm)
 
-source("code/getListOfSongs.R")
-source("code/getSongLyrics.R")
-source("code/getWordList.R")
-source("code/getLyricsFromList.R")
-source("code/getWordCount.R")
+setwd("D:/Iaroslav/Projects/What Do They Sing About/code2")
+source("getListOfSongs.R")
+source("getSongLyrics.R")
+source("getWordList.R")
+source("getLyricsFromList.R")
+source("getWordCount.R")
 ###########################################################
 
 id <- "queen"
 ###############################################################
 ## examples: queen, beatles, bee-gees, red-hot-chili-peppers ##
-## rolling-stones, nirvana, bob-marley, michael-jackson      ##
+## helloween                                                 ##
 ###############################################################
 
 listOfSongs <- getListOfSongs(id)
