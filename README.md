@@ -3,9 +3,9 @@ Creating wordclouds for lyrics.
 
 With help of the scripts one can easily download all the lyrics of the specified artist and build a wordcloud for them. `metrolyrics.com` site is used as a source of songs lyrics. 
 
-In brief, open main.R, make sure that the project directory is set as the working directory. Go to the line `id <- "queen"` and write the id of an artist you are interested in instead of `"queen"`, or leave it as it is. Then run the code and wait. It make take a few minutes, because here I make a pause each time a page with lyrics is downloaded to avoid IP ban. But you make turn this off by setting the corresponding parameter to zero.
+In brief, open main.R, make sure that the project directory is set as the working directory. Go to the line `id <- "queen"` and write the id of an artist you are interested in instead of `"queen"`, or leave it as it is. Then run the code and wait. It make take a few minutes, because here I make a pause each time a page with lyrics is downloaded to avoid IP ban. But you may turn this off by setting the corresponding parameter to zero.
 
-How to know artist's id? For example, Queen's homepage at metrolyrics is `metrolyrics.com/queen-overview.html`. Id is the part of the url after `metrolyrics.com/` and before `-overview.html`.
+How to find out artist's id? For example, Queen's homepage at metrolyrics is `metrolyrics.com/queen-overview.html`. Id is the part of the url after `metrolyrics.com/` and before `-overview.html`.
 
 Now about the functions that are called in main.R. I tried to make their names descriptive, but in any case here are some words about them:
 
