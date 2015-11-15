@@ -33,5 +33,5 @@ pal <- brewer.pal(8,'Dark2')
 png(paste0("findings/Wordclouds/",id,".png"),width = 800,height = 800)
 wordcloud(words = wordCount$word, freq = wordCount$freq,
           max.words = 150, random.order = F, colors = pal, 
-          random.color = F,scale = c(13,1.1))
+          random.color = F,scale = c(9,0.9))
 dev.off()
