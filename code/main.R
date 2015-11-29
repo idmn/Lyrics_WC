@@ -1,3 +1,4 @@
+# make sure that all the packages are up to date
 library(XML)
 library(stringr)
 library(wordcloud)

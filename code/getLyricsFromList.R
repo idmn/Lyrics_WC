@@ -4,6 +4,7 @@
 getLyricsFromList <- function(listOfSongs, pause = 0.5){
     n <- nrow(listOfSongs)
     res <- rep("",n)
+    message("Getting lyrics")
     ## progress bar
     pb <- txtProgressBar(min = 0, max = n, style = 3)
     for(i in 1:n){
