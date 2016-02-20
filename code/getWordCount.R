@@ -9,6 +9,10 @@ getWordCount <- function(listOfLyrics, popularity = 100){
     setnames(wordCount,"V1","word")
     ## remove stopwords
     wordCount <- wordCount[!(wordCount$word %in% SW),,]
+    ## sort by freq
+    wordCount <- wordCount[order(-freq)]
+    ## round freqs
+    wordCount$freq <- round(wordCount$freq,3)
     wordCount
 }
 
