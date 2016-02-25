@@ -35,8 +35,9 @@ write.table(wordCount,paste0('findings/WordLists/',id,'.csv'),
             sep = ',',row.names = F)
 
 
-pal <- brewer.pal(8,'Dark2')
+pal <- c("#5a5255", "#559e83", "#ae5a41", "#c3cb71", "#1b85b8")
 png(paste0("findings/Wordclouds/",id,".png"),width = 800,height = 800)
+par(bg = "black")
 wordcloud(words = wordCount$word, freq = wordCount$freq,
           max.words = 150, random.order = F, colors = pal, 
           random.color = F,scale = c(9,0.9))
