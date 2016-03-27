@@ -41,7 +41,8 @@ getListOfSongs <- function(artist_id){
     while(ifelse(is.na(last_page_num),T,i <= last_page_num)){
         tmp <- getSongsFromOnePage(artist_id,i,T)
         res <- rbind(res,tmp[[1]])
-        last_page_num <- tmp[[2]]
+        if(length(tmp[[2]])==0) last_page_num <- 1
+        else last_page_num <- tmp[[2]]
         rm(tmp)
         i <- i + 1
     }
