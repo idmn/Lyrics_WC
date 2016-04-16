@@ -6,12 +6,16 @@ library(RColorBrewer)
 library(data.table)
 library(tm)
 library(utils)
+library(png)
+library(abind)
+library(magrittr)
 
 source("code/getListOfSongs.R")
 source("code/getSongLyrics.R")
 source("code/getWordList.R")
 source("code/getLyricsFromList.R")
 source("code/getWordCount.R")
+source("code/printWC.R")
 ###########################################################
 
 id <- "queen"
@@ -34,14 +38,16 @@ wordCount <- getWordCount(lyrics,listOfSongs$popularity)
 write.table(wordCount,paste0('findings/WordLists/',id,'.csv'),
             sep = ',',row.names = F)
 
+## title
+title <- paste0('http://www.metrolyrics.com/', id, '-overview.html') %>%
+    readLines() %>%
+    htmlParse() %>%
+    xpathSApply('//h1', xmlValue)
 
+## print
 pal <- c("#5a5255", "#559e83", "#ae5a41", "#c3cb71", "#1b85b8")
-png(paste0("findings/Wordclouds/",id,".png"),width = 800,height = 800)
-par(bg = "black")
-wordcloud(words = wordCount$word, freq = wordCount$freq,
-          max.words = 150, random.order = F, colors = pal, 
-          random.color = F,scale = c(9,0.9))
-dev.off()
+file <- paste0("findings/Wordclouds/",id,".png")
+printWC(wordCount, file, title)
 
 
 
