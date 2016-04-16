@@ -2,13 +2,16 @@
 Creating wordclouds for lyrics.
 
 With help of the scripts one can easily download all the lyrics of the specified artist and build a wordcloud for them. `metrolyrics.com` site is used as a source of songs lyrics. 
+I use `wordcloud` package by Ian Fellows. To read more about it you may want to look at it's [documentation](https://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf).
 
 Wordclous are [here](findings/Wordclouds).
 
-To make new wordcloud: In brief, open main.R, make sure that the project directory is set as the working directory. Go to the line `id <- "queen"` and write the id of an artist you are interested in instead of `"queen"`, or leave it as it is. Then run the code and wait. It may take a few minutes, because here I make a pause each time a page with lyrics is downloaded to avoid IP ban. But you may turn this off by setting the corresponding parameter to zero.
+### How to make new wordcloud
+In brief, open main.R, make sure that the project directory is set as the working directory. Go to the line `id <- "queen"` and write the id of an artist you are interested in instead of `"queen"`, or leave it as it is. Then run the code and wait. It may take a few minutes, because here I make a pause each time a page with lyrics is downloaded to avoid IP ban. But you may turn this off by setting the corresponding parameter to zero.
 
 How to find out artist's id? For example, Queen's homepage at metrolyrics is `metrolyrics.com/queen-overview.html`. Id is the part of the url after `metrolyrics.com/` and before `-overview.html`.
 
+### Functions
 Now about the functions that are called in main.R. I tried to make their names descriptive, but in any case here are some words about them:
 
 * `getListOfSongs` The single argument is the artist's id. This function gets the catalog of songs as a data.frame with three columns. First column contains song titles, second - url of the corresponding page with lyrics and third - lyrics popularity as it counted by metrolyrics.  
@@ -16,4 +19,4 @@ Now about the functions that are called in main.R. I tried to make their names d
 * `getWordCount` The first argument is the list of lyrics, the second - list of their popularities. By default, this argument is set to 100 (percents), so that all the lyrics are equally popular. The output of the function is a data.table with words in the first column and their "frequencies" in the second. I'll explain how they are calculated by an example. Suppose an artist has two songs: Song1 and Song2. Word "yeah" occurs 10 times in the Song1 and 4 times in the Song2. Song1 popularity is 30 and Song2 popularity is 100. Then the resulting "frequency" for word "yeah" is `10*30/100 + 4*100/100 = 7`. Such a way of counting was selected to make more popular songs have more influence on the result.
 * `printWC` Basically prints wordcloud by known word couns to a selected file. Title may be specified.
 
-At the end `wordcloud` from the same named package by Ian Fellows is used. To read more about it you may want to look at it's [documentation](https://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf).
+
